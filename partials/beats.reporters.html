@@ -3,19 +3,21 @@
     <h2> Reporters for "{{ beat.name }}"</h2>
     <ul>
       <li ng-repeat="item in beat.reporters">
-        <a ui-sref="reporters({ reporterId: item.id })">{{ item.name }}</a>
+        <span ng-click="Reporter = true">{{item.name}}</span>
+      <span ng-click="Reporter = false" ng-show="Reporter">
+        >>> Employed {{item.years}} years and born on: {{item.birthday}}</span>
       </li>
     </ul>
   </div>
 </div>
 
 <div class="col-xs-12">
-  <h2> Add a reporter to "{{ beat.name }}"</h2>
+  <h2> Add Reporter to "{{ beat.name }}"</h2>
   <form ng-submit="addReporter()" class="form-inline" role="form">
     <div class="form-group">
-      <input type="text" ng-model="reporterName" class="form-control" placeholder="(Reporter name)" required/>
-      <input type="text" ng-model="reporterYears" class="form-control" placeholder="(Years Employed)" required/>
-      <input type="text" ng-model="reporterBirthday" class="form-control" placeholder="(Birthday)" required/>
+      <input type="text" ng-model="reporterName" class="form-control" placeholder="Enter name" required/>
+      <input type="text" ng-model="reporterYears" class="form-control" placeholder="Years Employed?" required/>
+      <input type="text" ng-model="reporterBirthday" class="form-control" placeholder="Enter Bday" required/>
     </div>
     <button type="submit" class="btn btn-danger">Submit</button>
   </form>
