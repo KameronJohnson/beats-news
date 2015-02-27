@@ -17,4 +17,10 @@ beatsNews.config(function($stateProvider) {
     templateUrl: "partials/beats.reporters.html",
     controller: "ReportersCtrl"
   });
+
+  $stateProvider.state('reporters', {
+    url: "/reporters/:reporterId",
+    templateUrl: "partials/reporters.html",
+    controller: "ReporterInfoCtrl"
+  });
 });
