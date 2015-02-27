@@ -1,20 +1,55 @@
-<div class="col-md-4">
-  <h2>Add a beat</h2>
-  <form ng-submit="BeatsFactory.addBeat()" class="form-inline" role="form">
-    <div class="form-group">
-      <input type="text" ng-model="BeatsFactory.beatName" class="form-control" placeholder="Beat name" /required>
+<div class="container">
+  <div class="row" ng-show="beats.length">
+    <div class="col-md-12">
+      <h2>Search Beats</h2>
+      <form class="form-inline" role="form">
+        <div class="form-group">
+          <input ng-model="query" type="text" class="form-control" id="beatId"
+          placeholder="Search">
+        </div>
+      </form>
     </div>
-    <button type="submit" class="btn btn-danger">Submit</button>
-  </form>
-</div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <h2 ng-show="beats.length && filtered.length">The Beat List</h2>
+      <h3 ng-show="beats.length && !filtered.length">No Matching Beats</h3>
+      <ul>
+        <li ng-repeat="item in filtered = (beats | filter:query)">
+          <span ng-click="editing = true" ng-hide="editing">
+            {{item.name}}
+          </span>
+          <span class="form-group" ng-show="editing" ng-submit="editing = false">
+            <form class="form-inline" role="form">
+              <input type="text" class="form-control input-sm" ng-model="item.name" placeholder="Name" required/>
+              <button class="btn btn-default btn-sm" type="submit">Save</button>
+            </form>
+          </span>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <div class="col-md-4">
+      <h2>Add a beat</h2>
+      <form ng-submit="BeatsFactory.addBeat()" class="form-inline" role="form">
+        <div class="form-group">
+          <input type="text" ng-model="BeatsFactory.beatName" class="form-control" placeholder="Beat name" /required>
+        </div>
+        <button type="submit" class="btn btn-danger">Submit</button>
+      </form>
+    </div>
 
-<div ng-show="beats.length">
-  <h2>Local Beats:</h2>
-  <ol>
-    <li ng-repeat="item in beats">
-      <a ui-sref="beats.reporters({ beatId: item.id })">{{ item.name }}</a>
-    </li>
-  </ol>
+    <div class="col-md-4">
+      <div ng-show="beats.length">
+        <h2>Added Beats:</h2>
+        <ol>
+          <li ng-repeat="item in beats">
+            <a ui-sref="beats.reporters({ beatId: item.id })">{{ item.name }}</a>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div ui-view></div>
+  <div ui-view></div>
