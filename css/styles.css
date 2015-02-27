@@ -1,0 +1,10 @@
+.jumbotron h1, .jumbotron h3 {
+  text-align: center;
+}
+
+body {
+    background-image: url("img/news.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
