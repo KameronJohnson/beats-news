@@ -1,5 +1,5 @@
-<div class="col-xs-12">
-  <h4>Add a beat</h4>
+<div class="col-md-4">
+  <h2>Add a beat</h2>
   <form ng-submit="BeatsFactory.addBeat()" class="form-inline" role="form">
     <div class="form-group">
       <input type="text" ng-model="BeatsFactory.beatName" class="form-control" placeholder="Beat name" /required>
@@ -12,7 +12,7 @@
   <h2>Local Beats:</h2>
   <ol>
     <li ng-repeat="item in beats">
-      <a ui-sref="beats.reporters({ beatId: item.id })"><{{ item.name }}</a>
+      <a ui-sref="beats.reporters({ beatId: item.id })">{{ item.name }}</a>
     </li>
   </ol>
 </div>
