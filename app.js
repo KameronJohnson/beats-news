@@ -12,4 +12,9 @@ beatsNews.config(function($stateProvider) {
       controller: 'BeatsCtrl'
   });
 
+  $stateProvider.state('beats.reporters', {
+    url: "/:beatId",
+    templateUrl: "partials/beats.reporters.html",
+    controller: "ReportersCtrl"
+  });
 });
